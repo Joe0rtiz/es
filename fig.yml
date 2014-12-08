@@ -1,0 +1,12 @@
+elasticsearch:
+  image: shiekron/es
+  command: /elasticsearch/bin/elasticsearch -Des.config=/data/elasticsearch.yml
+  volumes:
+    - /mnt/es:/data
+  ports:
+    - "9200:9200"
+kibana:
+  image: shiekron/kibana
+  ports:
+    - "5601:5601"
+  net: "container:es_elasticsearch_1"
